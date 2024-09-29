@@ -1,0 +1,18 @@
+{
+    "name": "DuckDB + Jupyter",
+    "dockerFile": "Dockerfile",
+    "forwardPorts": [
+        8888
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-azuretools.vscode-docker",
+                "mechatroner.rainbow-csv",
+                "ms-python.python",
+                "ms-toolsai.jupyter"
+            ]
+        }
+    }
+  }
+  

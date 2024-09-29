@@ -1,0 +1,19 @@
+{
+    "name": "MariaDB + Jupyter",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "workspace",
+    "workspaceFolder": "/workspace",
+    "forwardPorts": [
+        8888,
+        3306
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    }
+}
