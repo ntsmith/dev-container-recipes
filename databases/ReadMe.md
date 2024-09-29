@@ -1,12 +1,13 @@
-# DevContainer Demos - Databases
+# Dev Container Demos - Databases
 
-This repository contains examples of **VSCode DevContainers** for working with different databases.
+This repository contains examples of **VSCode Dev Containers** for working with different databases.
 Each subdirectory corresponds to a specific database and provides a  **Jupyter Notebook** to demonstrate basic usage.
 
 ## Databases Supported
 
 - **DuckDB** – An embedded database with SQL support.
 - **Redis** – An in-memory key-value store, often used as a cache or message broker.
+- **MariaDB** – A popular SQL database, originally based on MySQL.
 - **MongoDB** – A popular NoSQL database for storing JSON-like documents.
   
 More databases may be added in the future.
@@ -25,7 +26,7 @@ This container includes DuckDB and a Jupyter Notebook that demonstrates how to l
 
 ### Redis
 
-Redis is an in-memory key-value store. This DevContainer sets up a Redis server and a Jupyter notebook that makes a connection, sets data, and retrieves data.
+Redis is an in-memory key-value store. This Dev Container sets up a Redis server and a Jupyter notebook that makes a connection, sets data, and retrieves data.
 
 ### MongoDB
 
