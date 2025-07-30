@@ -1,0 +1,19 @@
+{
+  "name": "Jekyll on Ubuntu",
+  "build":{
+    "dockerfile": "Dockerfile"
+  },
+  "forwardPorts": [4000],
+  "postCreateCommand": "bundle install",
+  "postStartCommand": "bundle exec jekyll serve --livereload --host 0.0.0.0",
+  "runArgs": ["--init"],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "yzhang.markdown-all-in-one",
+        "bierner.markdown-preview-github-styles"
+      ]
+    }
+  }, 
+  "remoteUser": "vscode"
+}

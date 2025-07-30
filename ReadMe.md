@@ -17,19 +17,21 @@ To run the dev containers in this repository, you need to have the following ins
 
 ### Steps to Run Each Dev Container
 
-1. Clone this repository:
+1. Make sure you have the "Dev Containers" extension installed in VSCode
+
+2. Clone this repository:
    ```bash
    git clone https://github.com/ntsmith/dev-container-recipes.git
    cd dev-container-recipes
    ```
-2. Open VSCode for a subdirectory containing a devcontainer. For example to use DuckDB, type
+3. Open VSCode for a subdirectory containing a devcontainer. For example to use DuckDB, type
 
 ```bash
 code databases/duckdb
 ```
 
-3. Click **Reopen in Container**.
+4. Click **Reopen in Container**.
 
-4. Wait for the container to build and initialize.
+5. Wait for the container to build and initialize.
 
-5. Run the Jupyter notebook to explore the demo.
+6. Run the Jupyter notebook to explore the demo.

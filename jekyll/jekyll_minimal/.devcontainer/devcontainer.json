@@ -1,0 +1,16 @@
+{
+  "name": "Markdown Notes with Jekyll",
+  "image": "mcr.microsoft.com/devcontainers/ruby:3.1",
+  "features": {},
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "yzhang.markdown-all-in-one",
+        "bierner.markdown-preview-github-styles"
+      ]
+    }
+  }, 
+  "postCreateCommand": "bundle install",
+  "postStartCommand": "bundle exec jekyll serve --livereload --host 0.0.0.0",
+  "forwardPorts": [4000]
+}
