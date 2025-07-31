@@ -1,0 +1,9 @@
+title: "Jekyll Markdown"
+markdown: kramdown
+theme: minima
+
+kramdown:
+  input: GFM                # GitHub-style Markdown
+  math_engine: mathjax      # use MathJax
+  math_engine_opts:
+    preview: true           # preview math
