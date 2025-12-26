@@ -1,0 +1,13 @@
+{
+  "name": "Ubuntu With Claude",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+"customizations": {
+    "vscode": {
+      "extensions": [
+        "Anthropic.claude-code"
+      ]
+    }
+  }
+}

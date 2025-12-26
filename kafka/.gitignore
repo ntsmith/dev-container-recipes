@@ -1,0 +1,9 @@
+# Kafka data
+logs/
+data/
+
+# Zookeeper data
+zookeeper-data/
+
+# IDE
+.idea/

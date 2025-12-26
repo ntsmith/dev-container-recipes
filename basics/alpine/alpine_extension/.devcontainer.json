@@ -1,0 +1,11 @@
+{
+	"name": "Markdown Dev Container",
+	"image": "alpine",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"DavidAnson.vscode-markdownlint"
+			]
+		}
+	}
+}

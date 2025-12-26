@@ -1,0 +1,21 @@
+{
+  "name": "Kafka Dev Container",
+  "image": "ubuntu:latest",
+  "features": {
+    "docker-in-docker": "latest"
+  },
+  "runArgs": ["--network=host"],
+  // "postCreateCommand": "/bin/bash /workspace/.devcontainer/setup.sh",
+  // "postStartCommand": "/bin/bash /workspace/.devcontainer/setup.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "redhat.vscode-yaml",
+        "humao.rest-client",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+  "remoteUser": "root"
+}
+  

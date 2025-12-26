@@ -1,0 +1,4 @@
+{
+    "name": "Basic Dev Container",
+    "image": "alpine"
+}

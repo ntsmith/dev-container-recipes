@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.python-version
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Data files (add specific files to track if needed)
+*.csv
+*.xlsx
+*.parquet
+
+# IDE
+.idea/

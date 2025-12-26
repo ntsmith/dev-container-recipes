@@ -1,0 +1,7 @@
+{
+  "name": "Ubuntu with custom user",
+  "image": "ubuntu:latest",
+  "remoteUser": "root",
+  "updateRemoteUserUID": false,
+  "userEnvProbe": "none"
+}

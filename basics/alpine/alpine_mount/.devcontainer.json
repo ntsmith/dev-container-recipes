@@ -1,0 +1,4 @@
+{
+    "image": "alpine",
+    "mounts": "source=/,target=/myroot,type=bind"
+}

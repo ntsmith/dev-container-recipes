@@ -1,0 +1,7 @@
+{
+    "name": "Ubuntu with custom user",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "remoteUser": "ubuntu"
+}
