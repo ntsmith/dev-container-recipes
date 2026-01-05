@@ -1,31 +1,29 @@
 # DuckDB Dev Container
 
-An embedded analytics database with SQL support, running in a VSCode Dev Container with Jupyter Lab.
+An embedded analytics database with SQL support.
 
 ## What's Included
 
-- **DuckDB** - High-performance embedded SQL database
-- **Jupyter Lab** - Interactive notebook environment
-- **Python** - With pandas, numpy for data analysis
+- **DuckDB CLI** - High-performance embedded SQL database
 
 ## Quick Start
 
 1. Open this folder in VSCode
 2. Click "Reopen in Container" when prompted
-3. Open `duckdb_demo.ipynb` and run the cells
+3. Run the demo: `duckdb < demo.sql`
+
+Or use DuckDB interactively:
+
+```bash
+duckdb
+```
 
 ## Demo
 
-The included notebook demonstrates:
-- Loading CSV data into DuckDB
-- Running SQL queries
-- Working with query results in pandas
-
-## Ports
-
-| Port | Service |
-|------|---------|
-| 8888 | Jupyter Lab |
+The included script demonstrates:
+- Loading CSV data directly with SQL
+- Running queries with filters
+- Aggregations
 
 ## Files
 
@@ -33,9 +31,8 @@ The included notebook demonstrates:
 duckdb/
 ├── .devcontainer/
 │   ├── devcontainer.json
-│   ├── Dockerfile
-│   └── requirements.txt
-├── duckdb_demo.ipynb      # Demo notebook
+│   └── Dockerfile
+├── demo.sql               # Demo script
 ├── sample_data.csv        # Sample data
 └── README.md
 ```

@@ -1,0 +1,4 @@
+{
+    "image": "alpine",
+    "mounts": [ "source=subdir,target=/workspaces/dirmount,type=bind" ]
+}

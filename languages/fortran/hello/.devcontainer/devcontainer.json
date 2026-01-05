@@ -1,0 +1,14 @@
+{
+    "name": "Fortran DevContainer",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "fortran-lang.linter-gfortran",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    }
+}

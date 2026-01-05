@@ -1,0 +1,8 @@
+FROM alpine:latest
+
+RUN apk update && apk add --no-cache \
+    git \
+    nodejs \
+    npm
+
+RUN npm install -g typescript ts-node

@@ -1,0 +1,14 @@
+{
+    "name": "Haskell DevContainer",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "haskell.haskell",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    }
+}

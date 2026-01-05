@@ -3,7 +3,7 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
-"customizations": {
+  "customizations": {
     "vscode": {
       "extensions": [
         "Anthropic.claude-code"

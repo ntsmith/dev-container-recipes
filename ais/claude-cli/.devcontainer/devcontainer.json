@@ -1,0 +1,6 @@
+{
+  "name": "Ubuntu With Claude",
+  "build": {
+    "dockerfile": "Dockerfile"
+  }
+}

@@ -156,11 +156,15 @@ container_name/
 ├── .devcontainer/
 │   ├── devcontainer.json    # Required - container config
 │   └── Dockerfile           # Required - image definition
-├── docker-compose.yml       # Optional - multi-service setups
+├── docker-compose.yml       # Required for multi-container setups
 ├── README.md                # Required - setup/usage docs
 ├── .gitignore               # Required - ignore build artifacts
-└── demo.ipynb / demo.sh     # Required - working demonstration
+└── demo.*                   # Required - working demonstration
 ```
+
+**docker-compose.yml**: Required when the container needs external services (databases, message brokers, etc.) or involves multiple containers. Optional for single-container setups.
+
+**Demo files**: Any executable format is acceptable. Name according to language conventions (e.g., `main.py`, `demo.sql`, `example.js`, `demo.ipynb`). The demo must be runnable immediately after the container starts.
 
 ### devcontainer.json Essentials
 
@@ -197,6 +201,10 @@ Each container demo should:
 
 Database demos: Create DB/table → Insert data → Query data → Clean up
 Service demos: Start service → Produce/consume → Verify → Teardown
+
+### Base Image Policy
+
+All container images should be based on **Alpine**, **Debian**, or **Ubuntu**. If another base image seems appropriate, check with the user first before proceeding.
 
 ### Dockerfile Patterns
 

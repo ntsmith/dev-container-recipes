@@ -1,15 +1,13 @@
 {
-    "name": "Redis and Jupyter",
+    "name": "Redis",
     "dockerComposeFile": "docker-compose.yml",
     "service": "workspace",
     "workspaceFolder": "/workspace",
-    "forwardPorts": [8888, 6379],
+    "forwardPorts": [6379],
     "customizations": {
         "vscode": {
             "extensions": [
-                "ms-python.python",
-                "ms-toolsai.jupyter",
-                "ms-azuretools.vscode-docker"
+                "cweijan.vscode-redis-client"
             ]
         }
     }

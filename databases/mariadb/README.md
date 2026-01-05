@@ -1,40 +1,45 @@
 # MariaDB Dev Container
 
-A MySQL-compatible SQL database running in a VSCode Dev Container with Jupyter Lab.
+A MySQL-compatible SQL database with the MySQL CLI.
 
 ## What's Included
 
 - **MariaDB** - Popular open-source SQL database
-- **Jupyter Lab** - Interactive notebook environment
-- **Python** - With mysql-connector for database access
+- **mysql** - MySQL command-line client
 
 ## Quick Start
 
 1. Open this folder in VSCode
 2. Click "Reopen in Container" when prompted
 3. Wait for MariaDB service to start
-4. Open `maria_demo.ipynb` and run the cells
+4. Run the demo: `mysql -h mariadb -u user -ppassword demo_db < demo.sql`
+
+Or use mysql interactively:
+
+```bash
+mysql -h mariadb -u user -ppassword demo_db
+```
 
 ## Demo
 
-The included notebook demonstrates:
-- Connecting to MariaDB
-- Creating a database and table
-- Inserting and querying data
+The included script demonstrates:
+- Creating tables
+- Inserting data
+- Querying with filters and aggregations
 
 ## Ports
 
 | Port | Service |
 |------|---------|
-| 8888 | Jupyter Lab |
 | 3306 | MariaDB |
 
 ## Connection Details
 
 - **Host**: mariadb (from container) or localhost (from host)
 - **Port**: 3306
-- **User**: root
-- **Password**: (check docker-compose.yml)
+- **Database**: demo_db
+- **User**: user
+- **Password**: password
 
 ## Files
 
@@ -44,6 +49,6 @@ mariadb/
 │   ├── devcontainer.json
 │   ├── docker-compose.yml
 │   └── Dockerfile
-├── maria_demo.ipynb       # Demo notebook
+├── demo.sql               # Demo script
 └── README.md
 ```

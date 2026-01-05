@@ -1,0 +1,17 @@
+# Android/Gradle
+*.apk
+*.aab
+*.dex
+*.class
+*.jar
+*.aar
+build/
+.gradle/
+local.properties
+
+# IDE
+.idea/
+*.iml
+
+# Generated
+AltimeterApp/

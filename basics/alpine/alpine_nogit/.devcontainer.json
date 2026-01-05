@@ -1,5 +1,0 @@
-{
-    "image": "alpine",
-    "workspaceMount": "source=.,target=/workspaces/alpine_nogit,type=bind",
-    "workspaceFolder": "/workspaces/alpine_nogit"
-}

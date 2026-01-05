@@ -1,4 +1,0 @@
-jupyterlab
-duckdb
-pandas
-matplotlib

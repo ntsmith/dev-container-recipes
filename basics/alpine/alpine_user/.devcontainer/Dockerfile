@@ -1,4 +1,5 @@
 FROM alpine
 
-RUN adduser -D login
-USER login
+RUN adduser -D alpine
+
+USER alpine

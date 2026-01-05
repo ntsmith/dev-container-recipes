@@ -1,19 +1,10 @@
-FROM python:3-slim
+FROM debian:bookworm-slim
 
-# Set the working directory in the container
-WORKDIR /workspace
-COPY requirements.txt requirements.txt
-
-# Install DuckDB CLI and other dependencies
 RUN apt-get update && \
-    apt-get install -y build-essential curl wget && \
-    pip install --upgrade pip
+    apt-get install -y curl unzip && \
+    curl -fsSL https://github.com/duckdb/duckdb/releases/download/v1.1.3/duckdb_cli-linux-amd64.zip -o duckdb.zip && \
+    unzip duckdb.zip -d /usr/local/bin && \
+    rm duckdb.zip && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install Jupyter, DuckDB, and other necessary packages
-RUN pwd
-RUN pip install -r requirements.txt
-# Expose the Jupyter port
-EXPOSE 8888
-
-# Set the command to launch Jupyter Notebook
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--no-browser"]
+WORKDIR /workspace

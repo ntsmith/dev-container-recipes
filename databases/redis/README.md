@@ -1,32 +1,36 @@
 # Redis Dev Container
 
-An in-memory key-value store running in a VSCode Dev Container with Jupyter Lab.
+An in-memory key-value store with the Redis CLI.
 
 ## What's Included
 
 - **Redis** - High-performance in-memory data store
-- **Jupyter Lab** - Interactive notebook environment
-- **Python** - With redis-py for database access
+- **redis-cli** - Command-line interface for Redis
 
 ## Quick Start
 
 1. Open this folder in VSCode
 2. Click "Reopen in Container" when prompted
 3. Wait for Redis service to start
-4. Open `redis_demo.ipynb` and run the cells
+4. Run the demo: `./demo.sh`
+
+Or use redis-cli interactively:
+
+```bash
+redis-cli -h redis
+```
 
 ## Demo
 
-The included notebook demonstrates:
-- Connecting to Redis
+The included script demonstrates:
 - Setting and getting key-value pairs
-- Working with different data types
+- Storing JSON data
+- Working with hashes
 
 ## Ports
 
 | Port | Service |
 |------|---------|
-| 8888 | Jupyter Lab |
 | 6379 | Redis |
 
 ## Connection Details
@@ -42,6 +46,6 @@ redis/
 │   ├── devcontainer.json
 │   ├── docker-compose.yml
 │   └── Dockerfile
-├── redis_demo.ipynb       # Demo notebook
+├── demo.sh                # Demo script
 └── README.md
 ```

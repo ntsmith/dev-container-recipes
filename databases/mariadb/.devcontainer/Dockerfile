@@ -1,10 +1,7 @@
-FROM python:slim
+FROM debian:bookworm-slim
 
 RUN apt-get update && \
-    apt-get install -y build-essential default-mysql-client curl wget maria libmariadb-dev && \
-    pip install --upgrade pip
+    apt-get install -y default-mysql-client && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN pip install jupyterlab mysql-connector-python pandas mariadb
-
-EXPOSE 8888
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--no-browser"]
+WORKDIR /workspace

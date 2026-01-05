@@ -1,11 +1,7 @@
-FROM python:3-slim
+FROM debian:bookworm-slim
 
 RUN apt-get update && \
-    apt-get install -y build-essential curl wget redis-tools && \
-    pip install --upgrade pip
+    apt-get install -y redis-tools && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN pip install jupyterlab redis
-
-EXPOSE 8888
-
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--no-browser"]
+WORKDIR /workspace
