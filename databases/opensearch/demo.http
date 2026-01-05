@@ -1,0 +1,125 @@
+### Check OpenSearch cluster health
+GET http://opensearch:9200/_cluster/health
+
+### Check cluster info
+GET http://opensearch:9200
+
+### List all plugins
+GET http://opensearch:9200/_cat/plugins?v
+
+### ==========================================
+### Index Management
+### ==========================================
+
+### Create an index
+PUT http://opensearch:9200/my-index
+Content-Type: application/json
+
+{
+    "settings": {
+        "number_of_shards": 1,
+        "number_of_replicas": 0
+    },
+    "mappings": {
+        "properties": {
+            "title": { "type": "text" },
+            "description": { "type": "text" },
+            "price": { "type": "float" },
+            "created_at": { "type": "date" }
+        }
+    }
+}
+
+### ==========================================
+### Indexing Documents
+### ==========================================
+
+### Index a document
+POST http://opensearch:9200/my-index/_doc
+Content-Type: application/json
+
+{
+    "title": "Sample Product",
+    "description": "This is a sample product for testing OpenSearch",
+    "price": 29.99,
+    "created_at": "2024-01-15"
+}
+
+### Index another document
+POST http://opensearch:9200/my-index/_doc
+Content-Type: application/json
+
+{
+    "title": "Another Product",
+    "description": "OpenSearch is an open-source search and analytics suite",
+    "price": 49.99,
+    "created_at": "2024-01-16"
+}
+
+### ==========================================
+### Searching
+### ==========================================
+
+### Search all documents
+GET http://opensearch:9200/my-index/_search
+Content-Type: application/json
+
+{
+    "query": {
+        "match_all": {}
+    }
+}
+
+### Search with query
+GET http://opensearch:9200/my-index/_search
+Content-Type: application/json
+
+{
+    "query": {
+        "match": {
+            "description": "opensearch"
+        }
+    }
+}
+
+### Search with highlighting
+GET http://opensearch:9200/my-index/_search
+Content-Type: application/json
+
+{
+    "query": {
+        "match": {
+            "description": "sample"
+        }
+    },
+    "highlight": {
+        "fields": {
+            "description": {}
+        }
+    }
+}
+
+### ==========================================
+### Aggregations
+### ==========================================
+
+### Price statistics
+GET http://opensearch:9200/my-index/_search
+Content-Type: application/json
+
+{
+    "size": 0,
+    "aggs": {
+        "price_stats": {
+            "stats": {
+                "field": "price"
+            }
+        }
+    }
+}
+
+### List all indices
+GET http://opensearch:9200/_cat/indices?v
+
+### Delete the index
+DELETE http://opensearch:9200/my-index

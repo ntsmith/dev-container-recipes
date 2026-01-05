@@ -1,0 +1,182 @@
+### ==========================================
+### OpenSearch API Examples
+### ==========================================
+
+### Check cluster health
+GET http://opensearch:9200/_cluster/health
+
+### Check cluster info
+GET http://opensearch:9200
+
+### List all indices
+GET http://opensearch:9200/_cat/indices?v
+
+### ==========================================
+### Index Management
+### ==========================================
+
+### Create an index for application logs
+PUT http://opensearch:9200/app-logs
+Content-Type: application/json
+
+{
+    "settings": {
+        "number_of_shards": 1,
+        "number_of_replicas": 0
+    },
+    "mappings": {
+        "properties": {
+            "@timestamp": { "type": "date" },
+            "level": { "type": "keyword" },
+            "service": { "type": "keyword" },
+            "message": { "type": "text" },
+            "trace_id": { "type": "keyword" },
+            "duration_ms": { "type": "integer" }
+        }
+    }
+}
+
+### ==========================================
+### Indexing Documents
+### ==========================================
+
+### Index a log entry
+POST http://opensearch:9200/app-logs/_doc
+Content-Type: application/json
+
+{
+    "@timestamp": "2024-01-15T10:30:00Z",
+    "level": "INFO",
+    "service": "api-gateway",
+    "message": "Request processed successfully",
+    "trace_id": "trace-12345",
+    "duration_ms": 45
+}
+
+### Index an error log
+POST http://opensearch:9200/app-logs/_doc
+Content-Type: application/json
+
+{
+    "@timestamp": "2024-01-15T10:31:00Z",
+    "level": "ERROR",
+    "service": "user-service",
+    "message": "Database connection failed: timeout after 30s",
+    "trace_id": "trace-12346",
+    "duration_ms": 30000
+}
+
+### ==========================================
+### Searching
+### ==========================================
+
+### Search all logs
+GET http://opensearch:9200/app-logs/_search
+Content-Type: application/json
+
+{
+    "query": {
+        "match_all": {}
+    },
+    "sort": [
+        { "@timestamp": "desc" }
+    ]
+}
+
+### Search for errors
+GET http://opensearch:9200/app-logs/_search
+Content-Type: application/json
+
+{
+    "query": {
+        "term": {
+            "level": "ERROR"
+        }
+    }
+}
+
+### Aggregation: count by log level
+GET http://opensearch:9200/app-logs/_search
+Content-Type: application/json
+
+{
+    "size": 0,
+    "aggs": {
+        "logs_by_level": {
+            "terms": {
+                "field": "level"
+            }
+        }
+    }
+}
+
+### ==========================================
+### Data Prepper - Send Logs via HTTP
+### ==========================================
+
+### Send a log entry to Data Prepper
+POST http://data-prepper:2021/log/ingest
+Content-Type: application/json
+
+[
+    {
+        "level": "INFO",
+        "service": "payment-service",
+        "message": "Payment processed successfully",
+        "amount": 99.99
+    }
+]
+
+### Send multiple log entries
+POST http://data-prepper:2021/log/ingest
+Content-Type: application/json
+
+[
+    {"level": "INFO", "service": "order-service", "message": "Order created"},
+    {"level": "WARN", "service": "inventory-service", "message": "Low stock warning"},
+    {"level": "ERROR", "service": "shipping-service", "message": "Carrier API timeout"}
+]
+
+### Send metrics to Data Prepper
+POST http://data-prepper:2021/metrics/ingest
+Content-Type: application/json
+
+[
+    {
+        "name": "cpu_usage",
+        "value": 45.2,
+        "host": "server-1"
+    },
+    {
+        "name": "memory_usage",
+        "value": 72.8,
+        "host": "server-1"
+    }
+]
+
+### ==========================================
+### Check Data Prepper indices
+### ==========================================
+
+### List logs indices
+GET http://opensearch:9200/logs-*/_search
+Content-Type: application/json
+
+{
+    "query": { "match_all": {} }
+}
+
+### List metrics indices
+GET http://opensearch:9200/metrics-*/_search
+Content-Type: application/json
+
+{
+    "query": { "match_all": {} }
+}
+
+### ==========================================
+### Cleanup
+### ==========================================
+
+### Delete app-logs index
+DELETE http://opensearch:9200/app-logs

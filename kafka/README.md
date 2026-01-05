@@ -1,48 +1,46 @@
 # Kafka Dev Container
 
-Apache Kafka message broker with Zookeeper, running in a VSCode Dev Container.
+A development container for Apache Kafka using KRaft mode (no Zookeeper required).
 
-## What's Included
+## Services
 
-- **Apache Kafka** - Distributed streaming platform
-- **Zookeeper** - Coordination service for Kafka
-- **Docker-in-Docker** - Run containers inside the dev container
-
-## Quick Start
-
-1. Open this folder in VSCode
-2. Click "Reopen in Container" when prompted
-3. Start the Kafka stack:
-   ```bash
-   docker-compose -f .devcontainer/docker-compose.yml up -d
-   ```
-4. Run the POC test:
-   ```bash
-   ./poc-test.sh
-   ```
-
-## Demo
-
-The `poc-test.sh` script demonstrates:
-- Starting Zookeeper and Kafka
-- Creating a test topic
-- Producing messages
-- Consuming messages
+- **workspace**: Development environment with Kafka CLI tools
+- **kafka**: Kafka broker running in KRaft mode (combined controller + broker)
 
 ## Ports
 
-| Port | Service |
-|------|---------|
-| 2181 | Zookeeper |
-| 9092 | Kafka |
+- `9092`: Kafka broker (PLAINTEXT)
+- `9093`: Kafka controller
 
-## Architecture
+## Quick Start
 
+Once the container is running, open a terminal and run:
+
+```bash
+# Run the demo script
+./demo.sh
 ```
-┌─────────────────┐     ┌─────────────────┐
-│    Zookeeper    │◄────│      Kafka      │
-│    (port 2181)  │     │   (port 9092)   │
-└─────────────────┘     └─────────────────┘
+
+## Manual Commands
+
+```bash
+# List topics
+kafka-topics.sh --list --bootstrap-server kafka:9092
+
+# Create a topic
+kafka-topics.sh --create --topic my-topic --bootstrap-server kafka:9092 --partitions 3 --replication-factor 1
+
+# Produce messages (type messages, Ctrl+C to exit)
+kafka-console-producer.sh --topic my-topic --bootstrap-server kafka:9092
+
+# Consume messages
+kafka-console-consumer.sh --topic my-topic --bootstrap-server kafka:9092 --from-beginning
+
+# Describe a topic
+kafka-topics.sh --describe --topic my-topic --bootstrap-server kafka:9092
+
+# Delete a topic
+kafka-topics.sh --delete --topic my-topic --bootstrap-server kafka:9092
 ```
 
 ## Files
@@ -52,14 +50,7 @@ kafka/
 ├── .devcontainer/
 │   ├── devcontainer.json
 │   ├── docker-compose.yml
-│   ├── Dockerfile
-│   └── setup.sh
-├── poc-test.sh           # Demo script
+│   └── Dockerfile
+├── demo.sh              # Demo script
 └── README.md
 ```
-
-## Notes
-
-- Uses `--network=host` for easier localhost access
-- Bitnami Zookeeper image for simplicity
-- Kafka configured for single-node development

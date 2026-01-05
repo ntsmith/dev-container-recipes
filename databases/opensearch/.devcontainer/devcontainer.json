@@ -1,13 +1,12 @@
 {
-    "name": "Kafka",
+    "name": "OpenSearch",
     "dockerComposeFile": "docker-compose.yml",
     "service": "workspace",
     "workspaceFolder": "/workspace",
-    "forwardPorts": [9092, 9093],
+    "forwardPorts": [9200, 9600],
     "customizations": {
         "vscode": {
             "extensions": [
-                "redhat.vscode-yaml",
                 "humao.rest-client"
             ]
         }

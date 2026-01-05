@@ -1,6 +1,4 @@
-FROM bitnami/kafka:latest
-
-USER root
+FROM debian:bookworm-slim
 
 RUN apt-get update && \
     apt-get install -y curl jq netcat-openbsd && \
